@@ -3,41 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>正在開啟文件 / Loading Document...</title>
+    <title>正在載入... / Loading...</title>
     <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+        body, html {
             margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
         }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
-    <!-- 3秒後自動跳轉到 Rickroll 影片 -->
-    <meta http-equiv="refresh" content="3;url=https://youtube.com">
 </head>
 <body>
 
-    <div class="loader"></div>
-    <p>正在從安全伺服器載入內容，請稍候...</p>
-    <p style="font-size: 12px; color: #666;">安全憑證已確認。即將重新導向。</p>
+    <!-- 直接以全螢幕嵌入 YouTube 瑞克搖影片，並帶入自動播放與循環參數 -->
+    <iframe src="https://youtube.com" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+    </iframe>
 
 </body>
 </html>
