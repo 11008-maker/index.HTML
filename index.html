@@ -1,30 +1,287 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>正在載入... / Loading...</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adumbi - AI rick rolling Website</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1020;
+  color: white;
+  min-height: 100vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 7%;
+  border-bottom: 1px solid #28304a;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo span { color: #7c8cff; }
+
+.badge {
+  background: #18213d;
+  padding: 8px 14px;
+  border-radius: 20px;
+  color: #aab4ff;
+}
+
+main {
+  max-width: 850px;
+  margin: auto;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(42px, 7vw, 72px);
+}
+
+.gradient {
+  background: linear-gradient(90deg, #8c7bff, #39d9ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: #aeb7d0;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.builder {
+  background: #131a2e;
+  border: 1px solid #293454;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  background: #0b1020;
+  border: 1px solid #354166;
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 15px 28px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #756cff, #38cfff);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#status {
+  margin-top: 30px;
+  text-align: left;
+  display: none;
+}
+
+.status-line {
+  padding: 10px;
+  color: #9effc3;
+}
+
+.reveal {
+  display: none;
+  margin-top: 30px;
+  padding: 30px;
+  border-radius: 20px;
+  background: #131a2e;
+}
+
+#prankPage {
+  display: none;
+  min-height: 100vh;
+  text-align: center;
+  padding: 30px;
+}
+
+iframe {
+  width: min(900px, 95vw);
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 15px;
+}
+
+.stop {
+  background: #444;
+}
+</style>
+
 </head>
+
 <body>
-    <iframe src="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" 
-            allow="autoplay; encrypted-media" 
-            allowfullscreen>
-    </iframe>
+
+<div id="mainPage">
+
+<nav>
+  <div class="logo">Ad<span>umbi</span></div>
+  <div class="badge">● AI rick roll Website Builder</div>
+</nav>
+
+<main>
+
+<h1>Build websites with <span class="gradient">AI.</span></h1>
+
+<p class="subtitle">
+Describe your dream rick rolling website and Adumbi will bring it to life.
+</p>
+
+<div class="builder">
+
+<textarea
+id="idea"
+placeholder="Example: Make me an awesome website to rick roll my friends computer."
+></textarea>
+
+<br>
+
+<button onclick="buildWebsite()">Generate Website</button>
+
+<div id="status"></div>
+
+<div class="reveal" id="reveal">
+
+<h2>Website Generated!</h2>
+
+<p>Adumbi has finished building your website...</p>
+
+<button onclick="startPrank()">Open Website</button>
+
+</div>
+
+</div>
+
+</main>
+</div>
+
+<div id="prankPage">
+
+<h1>You got Rick rolled!</h1>
+
+<iframe
+id="video"
+src=""
+allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+<br>
+
+<button class="stop" onclick="stopPrank()">
+Stop prank
+</button>
+
+</div>
+
+<script>
+
+function buildWebsite() {
+
+  const status = document.getElementById("status");
+  const reveal = document.getElementById("reveal");
+
+  status.innerHTML = "";
+  status.style.display = "block";
+  reveal.style.display = "none";
+
+  const messages = [
+    "✓ Understanding your idea...",
+    "✓ Generating HTML...",
+    "✓ Adding CSS magic...",
+    "✓ Writing JavaScript...",
+    "✓ Finalizing website..."
+  ];
+
+  messages.forEach((message, index) => {
+
+    setTimeout(() => {
+
+      const line = document.createElement("div");
+
+      line.className = "status-line";
+      line.textContent = message;
+
+      status.appendChild(line);
+
+      if (index === messages.length - 1) {
+
+        setTimeout(() => {
+          reveal.style.display = "block";
+        }, 500);
+
+      }
+
+    }, index * 600);
+
+  });
+
+}
+
+
+function startPrank() {
+
+  const video = document.getElementById("video");
+
+  // Load video immediately from the user's button click
+  video.src =
+    "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&playsinline=1";
+
+  document.getElementById("mainPage").style.display = "none";
+  document.getElementById("prankPage").style.display = "block";
+
+  // Request fullscreen
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  }
+
+}
+
+
+function stopPrank() {
+
+  document.getElementById("video").src = "";
+
+  // Exit fullscreen
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  }
+
+  document.getElementById("prankPage").innerHTML = `
+
+    <h1>You just got rick rolled!</h1>
+
+    <button onclick="location.reload()">
+      Return to Adumbi
+    </button>
+
+  `;
+
+}
+
+</script>
 
 </body>
 </html>
